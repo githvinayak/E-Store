@@ -1,0 +1,37 @@
+.inputContainer{
+    position:relative;
+    width: 100%;
+    flex: 1;
+  }
+  .inputContainer .input{
+    border: 2px solid var(--primary);
+    padding:12px;
+    border-radius: 8px;
+    background-color: var(--tertiary);
+    width: 400px;
+  }
+  .inputContainer input::placeholder{
+    visibility:hidden;
+  }
+  .inputContainer .label{
+    position:absolute;
+    top:0;
+    color:rgba(255, 255, 255, 0.622);
+    left:12px;
+    transform:translateY(50%);
+    transition: transform 0.3s ease;
+  }
+  .inputContainer .input:focus {
+    outline-color: var(--primary);
+    border:none;
+  }
+  .inputContainer .input:focus + .label{
+    transform:translateY(-62%);
+    margin-left: 2px;
+    margin-right: 2px;
+    color: var(--primary);
+    background-color: var(--tertiary);
+  }
+  .inputContainer input:focus::placeholder{
+    visibility:visible;
+  }

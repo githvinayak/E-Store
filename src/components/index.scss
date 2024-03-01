@@ -1,0 +1,14 @@
+.background{
+    background-image: url("../assets/images/herobg.png");
+    background-size: cover;
+}
+.categories{
+    box-shadow:  -9px -9px 13px rgba(255,255,255,0.03),
+               9px 9px 13px rgba(0,0,0,0.1);
+    border-top: 0.1px solid grey;
+  }
+  .stars{
+    width: 30px;
+    height: 10px;
+    display: flex;
+  }

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Nunito&family=Outfit&family=Rouge+Script&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,9 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
+    --primary :#00ffbb;
+    --secondary:#0f1a53;
+    --tertiary:#050d44;
   }
   
   * {
@@ -14,11 +18,105 @@
     box-sizing: border-box;
   }
   
-  a {
-    text-decoration: none;
-    color: black;
+  @layer components {
+    .max-container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  
+    .input {
+      @apply sm:flex-1 max-sm:w-full text-base leading-normal  pl-5 max-sm:p-5 outline-none sm:border-none border max-sm:border max-sm:rounded-full;
+    }
   }
   
+  @layer utilities {
+    .padding {
+      @apply sm:px-16 px-8 sm:py-24 py-12;
+    }
+  
+    .padding-x {
+      @apply sm:px-16 px-8;
+    }
+  
+    .padding-y {
+      @apply sm:py-24 py-12;
+    }
+  
+    .padding-l {
+      @apply sm:pl-16 pl-8;
+    }
+  
+    .padding-r {
+      @apply sm:pr-16 pr-8;
+    }
+  
+    .padding-t {
+      @apply sm:pt-24 pt-12;
+    }
+  
+    .padding-b {
+      @apply sm:pb-24 pb-12;
+    }
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+  .navlink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+  }
+  .navlink a:after {
+    display: block;
+    content: "";
+    width: inherit;
+    border: 1px solid transparent;
+    border-image: linear-gradient(90deg, #00ffbb, #00bbf5, #4579f5) 1;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  .navlink a:hover:after {
+    transform: scaleX(1);
+    transition: all;
+    margin-top: 4px;
+    transform-origin: left;
+  }
+  
+  .searchbar {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    background: inherit;
+  }
+  .searchbar:focus-within {
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(to right, #00ffbb, #00bbf5, #4579f5) 1;
+  }
+  
+  .btn {
+    background: linear-gradient(to right, #00ffbb, #00bbf5, #4579f5);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Outfit", "sans-serif";
+    border: none;
+    clip-path: polygon(2rem 0, 100% 0, calc(100% - 2rem) 100%, 0 100%);
+    box-shadow: 0px 5px 20px #00bbf5, -0px -5px 20px #00ffbb;
+    transition: 0.5s;
+  }
+  .btn:hover {
+    clip-path: polygon(0 0, calc(100% - 2rem) 0, 100% 100%, 2rem 100%);
+  }
+    
   .red {
     color: red;
   }
