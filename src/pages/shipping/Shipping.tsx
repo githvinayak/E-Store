@@ -1,11 +1,22 @@
 import "./shipping.scss"
+import {shipping} from "../../assets/images";
+import { ChangeEvent, useState } from "react";
 const Shipping = () => {
-  
+  const [shippingInfo,setshippingInfo] = useState({
+    address:"",
+    city:"",
+    state:"",
+    country:"",
+    pincode:""
+  })
+  const changeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+    setshippingInfo((prev)=>({...prev,[e.target.name]:e.target.value}))
+  }
   return (
     <>
       <div className= "py-10 container">
         <div className="left">
-          <img src={pic} alt='Profile Picture' className="banner" />
+          <img src={shipping} alt='Profile Picture' className="banner" />
         </div>
         <div className="right">
           <div className="wrapper">
@@ -16,8 +27,10 @@ const Shipping = () => {
               <div className="inputContainer">
                 <input
                   className="input"
+                  name="address"
                   type='text'
-                  id='website-input'
+                  value={shippingInfo.address}
+                  onChange={changeHandler}
                   placeholder='Enter your Address'
                 />
                 <label className="label" >
@@ -28,7 +41,9 @@ const Shipping = () => {
                 <input
                  className="input"
                   type='text'
-                  id='website-input'
+                  name="city"
+                 value={shippingInfo.city}
+                 onChange={changeHandler}
                   placeholder='Enter your City'
                 />
                 <label className="label" >
@@ -39,7 +54,9 @@ const Shipping = () => {
                 <input
                  className="input"
                   type='text'
-                  id='website-input'
+                  name="state"
+                  value={shippingInfo.state}
+                  onChange={changeHandler}
                   placeholder='Enter your State'
                 />
                 <label className="label" >
@@ -50,14 +67,16 @@ const Shipping = () => {
                 <input
                  className="input"
                   type='number'
-                  id='website-input'
+                  name="pincode"
+                  value={shippingInfo.pincode}
+                  onChange={changeHandler}
                   placeholder='Enter your Pincode'
                 />
                 <label className="label" >  
                   Pincode
                 </label>
               </div>
-              <div className="btn">
+              <div className="button">
                 <button type='submit'>PAY NOW</button>
               </div>
               </form>

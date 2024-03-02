@@ -37,7 +37,9 @@ export default {
         "footerbg":"url('assets/images/footerbg.png')"
       },
       screens: {
-        "wide": "1440px"
+        "wide": "1536px",
+        "xsmall": "480px",
+        "2xsmall": "380px"
       }
     },
   },

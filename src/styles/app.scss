@@ -10,17 +10,26 @@
     --primary :#00ffbb;
     --secondary:#0f1a53;
     --tertiary:#050d44;
-  }
-  
-  * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
   }
   
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--tertiary);
+    max-width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+  }
   @layer components {
     .max-container {
-      max-width: 1440px;
+      max-width: 1536px;
       margin: 0 auto;
     }
   

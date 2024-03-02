@@ -10,9 +10,11 @@ import gamingchair from "./gaming-chair.png";
 import lappy from "./lappy.png";
 import profileImg from "./profile.png";
 import arrow from "./arrow.png";
+import shipping from "./shipping.png"
 
 export {
   arrow,
+  shipping,
   logo,
   herobg,
   hero,
