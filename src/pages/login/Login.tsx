@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { shipping } from "../../assets/images";
+import "./login.css"
 const Login = () => {
 
   return (
     <>
-      <div className='py-10 h-screen container'>
+      <div className='py-10 h-screen containerr'>
         <div className='left'>
           <img src={shipping} alt='Profile Picture' className='banner' />
         </div>
@@ -14,18 +15,18 @@ const Login = () => {
               SIGN <span className='blueText'>IN</span>
             </h2>
             <form className='form'>
-              <div className='inputContainer'>
+              <div className='inputContainerr'>
                 <input
-                  className='input'
+                  className='inputField'
                   type='text'
                   id='website-input'
                   placeholder='Enter your username'
                 />
                 <label className='label'>Username</label>
               </div>
-              <div className='inputContainer'>
+              <div className='inputContainerr'>
                 <input
-                  className='input'
+                  className='inputField'
                   type='text'
                   id='website-input'
                   placeholder='Enter your password'

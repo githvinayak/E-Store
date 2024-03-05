@@ -1,10 +1,15 @@
 import { Routes,Route, useLocation } from "react-router-dom";
 import { lazy,Suspense } from "react";
+import Loader from "./components/Loader"
+import Navbar from "./components/Navbar";
+
+const Search = lazy(()=>import("./pages/Search/Search"));
+const Shipping= lazy(()=>import("./pages/shipping/Shipping"));
+const  Login = lazy(()=>import("./pages/login/Login"));
+const Orders = lazy(()=>import("./pages/orders/Orders"));
 const Cart = lazy(()=>import("./pages/cart/cart"));
 const Home = lazy(()=>import("./pages/home"))
-import Navbar from "./components/Navbar";
-import Shipping from "./pages/shipping/Shipping";
-import Login from "./pages/login/Login"
+
 //admin routes
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const Products = lazy(() => import("./pages/admin/products"));
@@ -24,10 +29,6 @@ const TransactionManagement = lazy(
   () => import("./pages/admin/management/transactionmanagement")
 );
 
-
-
-import Loader from "./components/Loader"
-import Search from "./pages/Search/Search";
 const App=() =>{
   const location = useLocation();
   return (
@@ -40,6 +41,7 @@ const App=() =>{
        <Route path="/shipping" element={<Shipping/>} />
        <Route path="/login" element={<Login/>} />
        <Route path="/products" element={<Search/>} />
+       <Route path="/orders" element={<Orders/>} />
 
        {/* admin routes */}
        <Route

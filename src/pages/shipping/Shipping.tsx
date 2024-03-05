@@ -14,7 +14,7 @@ const Shipping = () => {
   }
   return (
     <>
-      <div className= "py-10 container">
+      <div className= "py-10 containerr">
         <div className="left">
           <img src={shipping} alt='Profile Picture' className="banner" />
         </div>
