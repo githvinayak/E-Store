@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./cart.scss";
 import { VscError } from "react-icons/vsc";
-import CartItem from "../components/CartItem";
+import CartItem from "../../components/CartItem";
 const cartItem = [
   {
     productId: "addd",

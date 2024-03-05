@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as FaIcons from "react-icons/fa6";
-const Search = () => {
+const SearchComponent = () => {
     const [keyword,setKeyword] = useState("");
     let navigate = useNavigate();
     // const searchSubmitHandler = (e)=>{
@@ -46,4 +46,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default SearchComponent

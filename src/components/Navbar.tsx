@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logo } from "../assets/images";
 import { navLinks } from "./constants";
 import * as FaIcons from "react-icons/fa6";
-import Search from "./Search";
+import Search from "./SearchComponent";
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isLogin, setLogin] = useState(false);
@@ -16,22 +16,22 @@ const Navbar = () => {
  const user = { _id:"hbadds",role:"user",name:"vinayak"}
   return (
     <>
-      <header className='padding-x py-3 fixed top-0 right-0 left-0 text-white z-10 w-full pb-24'>
+      <header className='padding-x py-3 fixed top-0 right-0 left-0 text-white z-10 w-full'>
         <nav className='flex flex-col max-container mx-auto'>
           {/* top nav */}
           <div className='flex justify-between max-sm:px-6 items-center border-b'>
             {/* left part */}
             <div className='flex space-x-16 max-lg:space-x-0 items-center'>
-              <NavLink to='/' className=' '>
+              <Link to='/' className=' '>
                 <img src={logo} alt='pic' className=' w-16 flex items-center' />
-              </NavLink>
+              </Link>
               <div className=" max-md:hidden">
               <Search />
               </div>
             </div>
             {/* right part */}
             <div className='flex items-center font-outfit justify-center ml-14 max-sm:space-x-6 space-x-10'>
-              <NavLink to='/login'>
+              <Link to='/login'>
                 <div
                   onClick={loginMenu}
                   className='flex justify-center items-center max-sm:hidden space-x-2'
@@ -43,7 +43,7 @@ const Navbar = () => {
                     <strong>My Account</strong>
                   </p>
                 </div>
-              </NavLink>
+              </Link>
               {/* { isLogin && <LoginDropdown/>} */}
               <div className='flex justify-center items-center max-sm:hidden space-x-2'>
                 <FaIcons.FaRegHeart className='w-10 h-7' />
@@ -78,9 +78,9 @@ const Navbar = () => {
             {/* { isArrowUp && <Dropdown className="max-md:hidden"/>} */}
             <ul className=' flex-1 navlink text-base space-x-8  max-md:hidden'>
               {navLinks.map(({ label, href }) => (
-                <NavLink key={href} to={href} className=''>
+                <Link key={href} to={href} className=''>
                   {label}
-                </NavLink>
+                </Link>
               ))}
             </ul>
             <div className="hidden max-md:flex">
