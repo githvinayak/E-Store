@@ -1,26 +1,56 @@
 import { User } from "../models/user.js";
 import ErrorHandler from "../utils/utility-class.js";
-export const newUser = async (req, res, next) => {
-    try {
-        return next(new ErrorHandler("mera error", 402));
-        const { name, email, photo, gender, dob, _id } = req.body;
-        const user = await User.create({
-            name,
-            email,
-            photo,
-            gender,
-            dob: new Date(dob),
-            _id,
-        });
-        return res.status(201).json({
+import { TryCatch } from "../middlewares/error.js";
+export const newUser = TryCatch(async (req, res, next) => {
+    const { name, email, photo, gender, _id, dob } = req.body;
+    let user = await User.findById(_id);
+    if (user)
+        return res.status(200).json({
             success: true,
-            message: `Welcome ${user.name}`,
+            message: `Welcome, ${user.name}`,
         });
+    if (!_id || !name || !email || !photo || !gender || !dob)
+        return next(new ErrorHandler("Please add all fields", 400));
+    user = await User.create({
+        name,
+        email,
+        photo,
+        gender,
+        _id,
+        dob: new Date(dob),
+    });
+    return res.status(201).json({
+        success: true,
+        message: `Welcome, ${user.name}`,
+    });
+});
+export const getAllUsers = TryCatch(async (req, res, next) => {
+    const users = await User.find({});
+    return res.status(200).json({
+        success: true,
+        users,
+    });
+});
+export const getSingleUser = TryCatch(async (req, res, next) => {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    if (!user) {
+        return next(new ErrorHandler("User not Found", 404));
     }
-    catch (error) {
-        return res.status(400).json({
-            success: false,
-            message: error,
-        });
+    return res.status(200).json({
+        success: true,
+        user,
+    });
+});
+export const deleteUser = TryCatch(async (req, res, next) => {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    if (!user) {
+        return next(new ErrorHandler("User not Found", 404));
     }
-};
+    await User.deleteOne();
+    return res.status(200).json({
+        success: true,
+        message: "deleted user successfully",
+    });
+});
