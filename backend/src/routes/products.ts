@@ -5,6 +5,7 @@ import {
   getAdminProducts,
   getAllCategories,
   getLatestProducts,
+  getSearchProducts,
   getSingleProduct,
   newProduct,
   updateProduct,
@@ -14,6 +15,7 @@ import { singleUpload } from "../middlewares/multer.js";
 const app = express.Router();
 
 app.post("/new", adminOnly, singleUpload, newProduct);
+app.get("/all", getSearchProducts);
 app.get("/latest", getLatestProducts);
 app.get("/categories", getAllCategories);
 app.get("/admin-products", adminOnly, getAdminProducts);
