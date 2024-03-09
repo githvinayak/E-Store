@@ -40,3 +40,9 @@ export interface BaseQuery{
   }
   category?:string  
 }
+
+export type InvalidateCaheType ={
+  product?:boolean,
+  order?:boolean,
+  admin?:boolean
+}
