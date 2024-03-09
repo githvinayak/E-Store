@@ -4,8 +4,8 @@ import {
   deleteProduct,
   getAdminProducts,
   getAllCategories,
+  getAllProducts,
   getLatestProducts,
-  getSearchProducts,
   getSingleProduct,
   newProduct,
   updateProduct,
@@ -14,8 +14,8 @@ import { singleUpload } from "../middlewares/multer.js";
 
 const app = express.Router();
 
-app.post("/new", adminOnly, singleUpload, newProduct);
-app.get("/all", getSearchProducts);
+app.post("/new", singleUpload, newProduct);
+app.get("/all", getAllProducts);
 app.get("/latest", getLatestProducts);
 app.get("/categories", getAllCategories);
 app.get("/admin-products", adminOnly, getAdminProducts);
