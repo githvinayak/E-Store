@@ -14,7 +14,7 @@ import { singleUpload } from "../middlewares/multer.js";
 
 const app = express.Router();
 
-app.post("/new", singleUpload, newProduct);
+app.post("/new",adminOnly, singleUpload, newProduct);
 app.get("/all", getAllProducts);
 app.get("/latest", getLatestProducts);
 app.get("/categories", getAllCategories);

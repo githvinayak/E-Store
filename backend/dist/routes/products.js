@@ -3,7 +3,7 @@ import { adminOnly } from "../middlewares/auth.js";
 import { deleteProduct, getAdminProducts, getAllCategories, getAllProducts, getLatestProducts, getSingleProduct, newProduct, updateProduct, } from "../controllers/Products.js";
 import { singleUpload } from "../middlewares/multer.js";
 const app = express.Router();
-app.post("/new", singleUpload, newProduct);
+app.post("/new", adminOnly, singleUpload, newProduct);
 app.get("/all", getAllProducts);
 app.get("/latest", getLatestProducts);
 app.get("/categories", getAllCategories);

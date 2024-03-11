@@ -88,7 +88,7 @@ const Cart = () => {
                       Invalid coupon code <VscError />
                     </span>
                   ))}
-                <button className='bg-primary rounded-md px-4 py-2 '>
+                <button className='bg-primary rounded-md font-bold px-4 py-2 '>
                   APPLY
                 </button>
               </div>
