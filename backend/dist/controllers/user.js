@@ -48,7 +48,7 @@ export const deleteUser = TryCatch(async (req, res, next) => {
     if (!user) {
         return next(new ErrorHandler("User not Found", 404));
     }
-    await User.deleteOne();
+    await user.deleteOne();
     return res.status(200).json({
         success: true,
         message: "deleted user successfully",

@@ -13,6 +13,7 @@ config({
 import userRoute from "./routes/user.js";
 import productRoute from "./routes/products.js";
 import orderRoute from "./routes/order.js";
+import couponRoute from "./routes/coupon.js"
 //db connect
 const DATABASE_URI = process.env.DATABASE_URL || "";
 connectDb(DATABASE_URI)
@@ -32,6 +33,7 @@ app.get("/",(req,res)=>{
 app.use("/api/v1/user",userRoute)
 app.use("/api/v1/product",productRoute)
 app.use("/api/v1/order",orderRoute)
+app.use("/api/v1/payment",couponRoute)
 
 
 app.use("/uploads",express.static("uploads"))
