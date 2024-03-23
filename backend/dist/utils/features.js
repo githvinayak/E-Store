@@ -9,7 +9,7 @@ export const connectDb = (uri) => {
         .then((c) => console.log(`mongodb is connected successfully to ${c.connection.host}`))
         .catch((err) => console.log(err));
 };
-export const invalidateCache = async ({ product, order, admin, userId, orderId, productId }) => {
+export const invalidateCache = ({ product, order, admin, userId, orderId, productId }) => {
     if (product) {
         const productKeys = [
             "latest-products",
@@ -32,7 +32,13 @@ export const invalidateCache = async ({ product, order, admin, userId, orderId, 
         ];
         myCache.del(orderKeys);
     }
-    if (product) {
+    if (admin) {
+        myCache.del([
+            "admin-stats",
+            "admin-bar-charts",
+            "admin-pie-charts",
+            "admin-line-charts"
+        ]);
     }
 };
 export const reduceStock = async (orderItems) => {
