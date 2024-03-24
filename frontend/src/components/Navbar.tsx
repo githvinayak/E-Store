@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { logo } from "../assets/images";
 import { navLinks } from "./constants";
 import * as FaIcons from "react-icons/fa6";
-import Search from "./SearchComponent";
+import SearchComponent from "./SearchComponent";
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isLogin, setLogin] = useState(false);
@@ -26,7 +26,7 @@ const Navbar = () => {
                 <img src={logo} alt='pic' className=' w-16 flex items-center' />
               </Link>
               <div className=" max-md:hidden">
-              <Search />
+              <SearchComponent />
               </div>
             </div>
             {/* right part */}
@@ -84,7 +84,7 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="hidden max-md:flex">
-            <Search/>
+            <SearchComponent/>
             </div>
           </div>
         </nav>

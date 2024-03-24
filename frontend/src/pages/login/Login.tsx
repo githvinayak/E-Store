@@ -1,67 +1,96 @@
-import { Link } from "react-router-dom";
 import { shipping } from "../../assets/images";
-import "./login.css"
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
+// import { auth } from "../firebase";
+// import { getUser, useLoginMutation } from "../redux/api/userAPI";
+// import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+// import { MessageResponse } from "../types/api-types";
+// import { userExist, userNotExist } from "../redux/reducer/userReducer";
+//import { useDispatch } from "react-redux";
+import "./login.css";
 const Login = () => {
+  //const dispatch = useDispatch();
+  const [gender, setGender] = useState("");
+  const [date, setDate] = useState("");
 
+  //const [login] = useLoginMutation();
+
+  //const loginHandler = async () => {
+  // try {
+  // const provider = new GoogleAuthProvider();
+  // const { user } = await signInWithPopup(auth, provider);
+
+  //     console.log({
+  //       name: user.displayName!,
+  //       email: user.email!,
+  //       photo: user.photoURL!,
+  //       gender,
+  //       role: "user",
+  //       dob: date,
+  //       _id: user.uid,
+  //     });
+
+  //     const res = await login({
+  //       name: user.displayName!,
+  //       email: user.email!,
+  //       photo: user.photoURL!,
+  //       gender,
+  //       role: "user",
+  //       dob: date,
+  //       _id: user.uid,
+  //     });
+
+  //     if ("data" in res) {
+  //       toast.success(res.data.message);
+  //       const data = await getUser(user.uid);
+  //       dispatch(userExist(data?.user!));
+  //     } else {
+  //       const error = res.error as FetchBaseQueryError;
+  //       const message = (error.data as MessageResponse).message;
+  //       toast.error(message);
+  //       dispatch(userNotExist());
+  //     }
+  //   } catch (error) {
+  //     toast.error("Sign In Fail");
+  //   }
+  // };
   return (
     <>
-      <div className='py-10 h-screen containerr'>
-        <div className='left'>
+      <div className='main'>
+        <div className='leftDiv'>
           <img src={shipping} alt='Profile Picture' className='banner' />
         </div>
-        <div className='right'>
-          <div className='wrapper'>
-            <h2 className='title'>
-              SIGN <span className='blueText'>IN</span>
-            </h2>
-            <form className='form'>
-              <div className='inputContainerr'>
-                <input
-                  className='inputField'
-                  type='text'
-                  id='website-input'
-                  placeholder='Enter your username'
-                />
-                <label className='label'>Username</label>
-              </div>
-              <div className='inputContainerr'>
-                <input
-                  className='inputField'
-                  type='text'
-                  id='website-input'
-                  placeholder='Enter your password'
-                />
-                <label className='label'>Password</label>
-              </div>
-              <div className='button'>
-                <button type='submit'>SIGN IN</button>
-              </div>
-            </form>
-            <div className='lower'>
-              <h2 className='text'>OR Sign in with</h2>
-              {/* <div className='socialIcons'>
-                <div className='icons'>
-                <img src={google} alt='google' />
-                </div>
-                <div className='icons'>
-                  <img src={facebook} alt='fb' />
-                </div>
-                <div className='icons'>
-                  <img src={github} alt='gh' />
-                </div>
-              </div> */}
-              <p className='text2'>
-                Don't have an account ?
-                <Link to='/register' className='register'>
-                  Sign Up
-                </Link>
-              </p>
-            </div>
+        <main className='rightDiv'>
+          <h2 className='title'>
+            SIGN <span className='blueText'>IN</span>
+          </h2>
+          <div className="gender">
+            <label className="genlabel">Gender</label>
+            <select value={gender} className='text-white font-lato outline-none border-[3px] border-primary bg-secondary rounded-lg py-3 flex gap-4  px-4' onChange={(e) => setGender(e.target.value)}>
+              <option value=''>Select Gender</option>
+              <option value='male'>Male</option>
+              <option value='female'>Female</option>
+            </select>
           </div>
-        </div>
+          <div className='dob'>
+            <input
+              type='date'
+              className='inputField'
+              placeholder='Enter your DOB'
+            />
+            <label className='label'>Enter you DOB</label>
+          </div>
+          <p className="text">Already Signed In Once</p>
+          <div className="loginBtn">
+            <button className="flex gap-2 justify-center px-3 rounded-lg py-2 items-center bg-sky-500">
+              <FcGoogle /> <span className="text-white ">Sign in with Google</span>
+            </button>
+          </div>
+        </main>
       </div>
     </>
   );
 };
-
 export default Login;
