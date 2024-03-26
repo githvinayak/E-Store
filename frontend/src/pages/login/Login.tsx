@@ -10,52 +10,42 @@ import { FcGoogle } from "react-icons/fc";
 // import { userExist, userNotExist } from "../redux/reducer/userReducer";
 //import { useDispatch } from "react-redux";
 import "./login.css";
+import { auth } from "../../firebase";
+import { useLoginMutation } from "../../redux/api/userApi";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { MessageResponse } from "../../types/api-types";
 const Login = () => {
   //const dispatch = useDispatch();
   const [gender, setGender] = useState("");
   const [date, setDate] = useState("");
+  const [login] = useLoginMutation()
 
-  //const [login] = useLoginMutation();
+  const loginHandler = async()=>{
+    try {
+      const provider   = new GoogleAuthProvider()
+     const {user} =  await signInWithPopup(auth,provider);
+    const res = await login({
+      name:"jbjbkb",
+      email:"yvgjkvj",
+      photo:"hgbj",
+      gender,
+      role:"user",
+      dob:date,
+      _id:"iihiji"
+     })
 
-  //const loginHandler = async () => {
-  // try {
-  // const provider = new GoogleAuthProvider();
-  // const { user } = await signInWithPopup(auth, provider);
+     if( "data" in res){
+      toast.success(res.data.message)
+     }else{
+      const error = res.error as FetchBaseQueryError,
+      const message = (error.data as MessageResponse).message
+      toast.error(message)
+     }
+    } catch (error) {
+      toast.error("somethign went wrong")
+    }
+  }
 
-  //     console.log({
-  //       name: user.displayName!,
-  //       email: user.email!,
-  //       photo: user.photoURL!,
-  //       gender,
-  //       role: "user",
-  //       dob: date,
-  //       _id: user.uid,
-  //     });
-
-  //     const res = await login({
-  //       name: user.displayName!,
-  //       email: user.email!,
-  //       photo: user.photoURL!,
-  //       gender,
-  //       role: "user",
-  //       dob: date,
-  //       _id: user.uid,
-  //     });
-
-  //     if ("data" in res) {
-  //       toast.success(res.data.message);
-  //       const data = await getUser(user.uid);
-  //       dispatch(userExist(data?.user!));
-  //     } else {
-  //       const error = res.error as FetchBaseQueryError;
-  //       const message = (error.data as MessageResponse).message;
-  //       toast.error(message);
-  //       dispatch(userNotExist());
-  //     }
-  //   } catch (error) {
-  //     toast.error("Sign In Fail");
-  //   }
-  // };
   return (
     <>
       <div className='main'>
@@ -84,7 +74,7 @@ const Login = () => {
           </div>
           <p className="text">Already Signed In Once</p>
           <div className="loginBtn">
-            <button className="flex gap-2 justify-center px-3 rounded-lg py-2 items-center bg-sky-500">
+            <button onClick={loginHandler} className="flex gap-2 justify-center px-3 rounded-lg py-2 items-center bg-sky-500">
               <FcGoogle /> <span className="text-white ">Sign in with Google</span>
             </button>
           </div>

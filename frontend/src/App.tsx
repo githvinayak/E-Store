@@ -2,6 +2,7 @@ import { Routes,Route, useLocation } from "react-router-dom";
 import { lazy,Suspense } from "react";
 import Loader from "./components/Loader"
 import Navbar from "./components/Navbar";
+import {Toaster} from "react-hot-toast"
 
 const Search = lazy(()=>import("./pages/Search/Search"));
 const Shipping= lazy(()=>import("./pages/shipping/Shipping"));
@@ -71,6 +72,7 @@ const App=() =>{
 </Route>;
       </Routes>
      </Suspense>
+     <Toaster position="bottom-right"/>
       {/* Footer */}
     </>
   )
