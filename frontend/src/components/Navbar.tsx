@@ -4,7 +4,16 @@ import { logo } from "../assets/images";
 import { navLinks } from "./constants";
 import * as FaIcons from "react-icons/fa6";
 import SearchComponent from "./SearchComponent";
-const Navbar = () => {
+import { User } from "../types/types";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import toast from "react-hot-toast";
+
+interface PropsType{
+  user:User | null
+}
+
+const Navbar = ({user}:PropsType) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isLogin, setLogin] = useState(false);
   const toggleMenu = () => {
@@ -13,7 +22,15 @@ const Navbar = () => {
   const loginMenu = () => {
     setLogin(!isLogin);
   };
- const user = { _id:"hbadds",role:"user",name:"vinayak"}
+  const logoutHandler = async() =>{
+    try {
+      await signOut(auth);
+      toast.success("Sign Out Successfully")
+    } catch (error) {
+      toast.error("Sign Out Fail")
+    }
+  }
+//  const user = { _id:"hbadds",role:"user",name:"vinayak"}
   return (
     <>
       <header className='padding-x py-3 fixed top-0 right-0 left-0 text-white z-10 w-full'>
@@ -44,6 +61,9 @@ const Navbar = () => {
                   </p>
                 </div>
               </Link>
+              <div className="hidden">
+                <span>Logout</span>
+              </div>
               {/* { isLogin && <LoginDropdown/>} */}
               <div className='flex justify-center items-center max-sm:hidden space-x-2'>
                 <FaIcons.FaRegHeart className='w-10 h-7' />
