@@ -73,12 +73,12 @@ const App = () => {
             }
           />
           {/* logged in routes */}
-          <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}>
+          {/* <Route element={<ProtectedRoute isAuthenticated={user ? true : false} />}> */}
           <Route path='/orders' element={<Orders />} />
           <Route path='/orders/:id' element={<OrderDetails />} />
           <Route path="/shipping" element={<Shipping />} />
           {/* <Route path="/pay" element={<Checkout />} /> */}
-          </Route>
+          {/* </Route> */}
           {/* admin routes */}
           <Route
           element={

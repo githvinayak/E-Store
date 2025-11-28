@@ -3,7 +3,7 @@ import axios from "axios";
 import { AllProductsResponse, MessageResponse} from "../../types/api-types"; 
 import { User } from "../../types/types";
 
-export const userAPI = createApi({
+export const productAPI = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_SERVER}/api/v1/product/`,
@@ -14,3 +14,5 @@ export const userAPI = createApi({
     }),
   })
 })
+
+export const {useLatestProductsQuery} = productAPI;
